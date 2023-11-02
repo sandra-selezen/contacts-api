@@ -30,3 +30,14 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## .ENV template
+
+```
+PORT=8080
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5433
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_DB=
+SECRET_KEY=
+```
