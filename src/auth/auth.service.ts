@@ -48,7 +48,9 @@ export class AuthService {
     return token;
   }
 
-  async logout() {}
+  async logout(userId: string) {
+    await this.userModel.findByIdAndUpdate({ _id: userId }, { token: null });
+  }
 
   async getUserByEmail(email: string) {
     const user = await this.userModel.findOne({ email });

@@ -1,4 +1,11 @@
-import { Controller, Post, Body, UseGuards, UsePipes } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  UseGuards,
+  UsePipes,
+  Request,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -28,9 +35,11 @@ export class AuthController {
     return this.authService.login(loginUserDto);
   }
 
-  @ApiOperation({ summary: '' })
+  @ApiOperation({ summary: 'Log out user' })
   @ApiResponse({ status: 200 })
   @UseGuards(AuthGuard)
   @Post('logout')
-  logout() {}
+  logout(@Request() req: any) {
+    return this.authService.logout(req.user.id);
+  }
 }
