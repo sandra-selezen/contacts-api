@@ -5,6 +5,7 @@ import {
   UseGuards,
   UsePipes,
   Request,
+  Get,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -24,10 +25,11 @@ export class AuthController {
   @UsePipes(ValidationPipe)
   @Post('register')
   register(@Body() createAuthDto: CreateUserDto) {
+    console.log(createAuthDto);
     return this.authService.register(createAuthDto);
   }
 
-  @ApiOperation({ summary: 'Login user' })
+  @ApiOperation({ summary: 'Log in user' })
   @ApiResponse({ status: 200, type: LoginUserResponseDto })
   @UsePipes(ValidationPipe)
   @Post('login')
@@ -41,5 +43,13 @@ export class AuthController {
   @Post('logout')
   logout(@Request() req: any) {
     return this.authService.logout(req.user.id);
+  }
+
+  @ApiOperation({ summary: 'Get information about the current user' })
+  @ApiResponse({ status: 200 })
+  @UseGuards(AuthGuard)
+  @Get('current')
+  getCurrentUser(@Request() req: any) {
+    return this.authService.getCurrentUser(req.user.id);
   }
 }

@@ -52,6 +52,11 @@ export class AuthService {
     await this.userModel.findByIdAndUpdate({ _id: userId }, { token: null });
   }
 
+  async getCurrentUser(userId: string) {
+    const user = await this.userModel.findById(userId);
+    return user.token;
+  }
+
   async getUserByEmail(email: string) {
     const user = await this.userModel.findOne({ email });
     return user;
