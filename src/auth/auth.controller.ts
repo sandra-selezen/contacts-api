@@ -25,7 +25,6 @@ export class AuthController {
   @UsePipes(ValidationPipe)
   @Post('register')
   register(@Body() createAuthDto: CreateUserDto) {
-    console.log(createAuthDto);
     return this.authService.register(createAuthDto);
   }
 
