@@ -6,6 +6,7 @@ async function bootstrap() {
   const PORT = process.env.PORT;
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
+  app.enableCors();
 
   const config = new DocumentBuilder()
     .setTitle('The Phonebook API')

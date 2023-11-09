@@ -45,7 +45,11 @@ export class AuthService {
     const token = this.jwtService.sign(payload);
 
     await this.userModel.findByIdAndUpdate(user._id, { token });
-    return token;
+    return {
+      name: user.name,
+      email: user.email,
+      token,
+    };
   }
 
   async logout(userId: string) {
@@ -54,7 +58,11 @@ export class AuthService {
 
   async getCurrentUser(userId: string) {
     const user = await this.userModel.findById(userId);
-    return user.token;
+    return {
+      name: user.name,
+      email: user.email,
+      token: user.token,
+    };
   }
 
   async getUserByEmail(email: string) {
