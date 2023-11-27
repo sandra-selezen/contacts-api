@@ -24,7 +24,7 @@ export class ContactsService {
     return contact;
   }
 
-  async delete(contactId: string) {
-    await this.contactModel.findByIdAndRemove({ _id: contactId }).exec();
-  }
+  // async delete(contactId: string) {
+  //   await this.contactModel.findByIdAndRemove({ _id: contactId }).exec();
+  // }
 }

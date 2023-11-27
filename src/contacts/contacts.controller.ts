@@ -7,8 +7,6 @@ import {
   UsePipes,
   ValidationPipe,
   UseGuards,
-  Delete,
-  Param,
 } from '@nestjs/common';
 import { ContactsService } from './contacts.service';
 import {
@@ -42,9 +40,9 @@ export class ContactsController {
     return this.contactsService.create(createContactDto, req.user.id);
   }
 
-  @UseGuards(AuthGuard)
-  @Delete(':id')
-  async delete(@Param('id') id: string) {
-    return this.contactsService.delete(id);
-  }
+  // @UseGuards(AuthGuard)
+  // @Delete(':id')
+  // async delete(@Param('id') id: string) {
+  //   return this.contactsService.delete(id);
+  // }
 }
