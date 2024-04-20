@@ -30,12 +30,6 @@ export class Contact {
     ref: 'User',
   })
   owner: User;
-
-  @Prop({
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-  })
-  _id: string;
 }
 
 export const ContactSchema = SchemaFactory.createForClass(Contact);
