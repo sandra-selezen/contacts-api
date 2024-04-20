@@ -23,13 +23,19 @@ export class Contact {
     type: Boolean,
     default: false,
   })
-  favorite: string;
+  favorite: boolean;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   })
   owner: User;
+
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  })
+  _id: string;
 }
 
 export const ContactSchema = SchemaFactory.createForClass(Contact);
