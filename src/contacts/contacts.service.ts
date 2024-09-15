@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateContactDto } from './dto/create-contact.dto';
-// import { UpdateContactDto } from './dto/update-contact.dto';
 import { Contact } from 'src/schemas/contact.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
